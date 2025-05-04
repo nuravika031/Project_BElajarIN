@@ -1,66 +1,112 @@
-<<<<<<< HEAD
-# Project_BElajarIN
-(Sistem Manajemen Kursus Online)
-=======
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <b>BElajarIN</b><br>
+  <i>Bersama Elu, Latihan & Ajar Jadi Asyik & INteraktif</i><br><br>
+  <img src="./Logo%20Unsulbar.png" alt="Logo Unsulbar" width="150"><br><br>
+  <b>Nur Avika</b><br>
+  <b>D0223013</b><br><br>
+  Mata Kuliah Framework Web Based – Tahun 2025
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Role dan Fitur-fiturnya
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Admin
+1. Menambah dan mengedit pengguna: nama, email, dan role (admin, pengajar, siswa).
+2. Mengelola kursus: menambah dan mengedit informasi kursus (judul, deskripsi, pengajar).
+3. Memvalidasi kursus yang dibuat pengajar: meninjau dan menyetujui/menolak kursus.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Pengajar
+1. Membuat dan mengelola kursus.
+2. Mengunggah materi kursus (file atau video).
+3. Melihat daftar siswa yang terdaftar.
 
-## Learning Laravel
+### Siswa
+1. Mendaftar ke kursus yang diinginkan.
+2. Mengakses materi dari kursus yang telah diikuti.
+3. Melakukan pembayaran untuk kursus.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Tabel-Tabel Database
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. `pengguna`
+| Nama Field  | Tipe Data      | Keterangan                              |
+|-------------|----------------|------------------------------------------|
+| id          | bigIncrements  | Primary key                             |
+| nama        | string         | Nama lengkap pengguna                   |
+| email       | string         | Email unik untuk login                  |
+| kata_sandi  | string         | Password terenkripsi                    |
+| role        | enum           | Role: admin, pengajar, siswa            |
+| created_at  | timestamp      | Otomatis                                |
+| updated_at  | timestamp      | Otomatis                                |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 2. `kursus`
+| Nama Field   | Tipe Data        | Keterangan                         |
+|--------------|------------------|-------------------------------------|
+| id           | bigIncrements    | Primary key                        |
+| judul        | string           | Judul kursus                       |
+| deskripsi    | text             | Deskripsi kursus                   |
+| id_pengajar  | unsignedBigInt   | Foreign key ke tabel `pengguna`    |
+| created_at   | timestamp        | Otomatis                           |
+| updated_at   | timestamp        | Otomatis                           |
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+### 3. `pendaftaran`
+| Nama Field     | Tipe Data        | Keterangan                          |
+|----------------|------------------|--------------------------------------|
+| id             | bigIncrements    | Primary key                         |
+| id_pengguna    | unsignedBigInt   | Foreign key ke tabel `pengguna`     |
+| id_kursus      | unsignedBigInt   | Foreign key ke tabel `kursus`       |
+| tanggal_daftar | date             | Tanggal pendaftaran                 |
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. `materi`
+| Nama Field    | Tipe Data        | Keterangan                         |
+|---------------|------------------|-------------------------------------|
+| id            | bigIncrements    | Primary key                        |
+| id_kursus     | unsignedBigInt   | Foreign key ke tabel `kursus`      |
+| judul         | string           | Judul materi                       |
+| konten        | text             | Isi materi                         |
+| tautan_video  | string           | Link video (jika ada)              |
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. `transaksi`
+| Nama Field         | Tipe Data        | Keterangan                          |
+|--------------------|------------------|--------------------------------------|
+| id                 | bigIncrements    | Primary key                         |
+| id_pengguna        | unsignedBigInt   | Foreign key ke tabel `pengguna`     |
+| id_kursus          | unsignedBigInt   | Foreign key ke tabel `kursus`       |
+| status_pembayaran  | enum             | Menunggu, Berhasil, Gagal           |
+| jumlah             | integer          | Nominal pembayaran                  |
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Jenis Relasi dan Tabel yang Berelasi
 
-## License
+| No | Tabel 1   | Relasi | Tabel 2     | Jenis Relasi                                  |
+|----|-----------|--------|-------------|-----------------------------------------------|
+| 1  | pengguna  | ➝      | kursus      | One to Many (pengajar memiliki banyak kursus) |
+| 2  | pengguna  | ⇄      | kursus      | Many to Many (via tabel pendaftaran)          |
+| 3  | kursus    | ➝      | materi      | One to Many (kursus memiliki banyak materi)   |
+| 4  | pengguna  | ➝      | transaksi   | One to Many (siswa melakukan banyak transaksi)|
+| 5  | kursus    | ➝      | transaksi   | One to Many (kursus memiliki banyak transaksi)|
+| 6  | pengguna  | ➝      | pendaftaran | One to Many                                   |
+| 7  | kursus    | ➝      | pendaftaran | One to Many                                   |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
->>>>>>> a99dbc2 (fist commitku)
+---
+
+## Penjelasan Relasi
+
+1. Setiap pengajar adalah pengguna yang dapat membuat banyak kursus (One to Many).
+2. Siswa dapat mendaftar ke banyak kursus, dan satu kursus dapat diikuti banyak siswa (Many to Many).
+3. Kursus memiliki banyak materi yang diunggah oleh pengajar.
+4. Transaksi dilakukan oleh siswa untuk mengikuti kursus, dan setiap transaksi mencatat status serta jumlah pembayaran.
+5. Pendaftaran menyimpan riwayat siswa yang mendaftar ke kursus tertentu.
+
+---
