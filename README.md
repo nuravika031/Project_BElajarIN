@@ -4,7 +4,8 @@
   <img src="./Logo%20Unsulbar.png" alt="Logo Unsulbar" width="150"><br><br>
   <b>Nur Avika</b><br>
   <b>D0223013</b><br><br>
-  Mata Kuliah Framework Web Based – Tahun 2025
+  Framework Web Based<br>
+  2025
 </p>
 
 ---
