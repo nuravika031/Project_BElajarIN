@@ -1,6 +1,6 @@
 <p align="center">
-  <b>BElajarIN</b><br>
-  <i>Bersama Elu, Latihan & Ajar Jadi Asyik & INteraktif</i><br><br>
+  <b>Sistem Manajemen Kursus Online</b><br>
+  <i>BElajarIN – Bersama Elu, Latihan & Ajar Jadi Asyik & INteraktif</i><br><br>
   <img src="./Logo%20Unsulbar.png" alt="Logo Unsulbar" width="150"><br><br>
   <b>Nur Avika</b><br>
   <b>D0223013</b><br><br>
