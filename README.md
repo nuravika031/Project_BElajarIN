@@ -21,7 +21,7 @@
 2. Mengunggah materi kursus (file atau video).
 3. Melihat daftar siswa yang terdaftar.
 
-### Siswa
+### Pelajar
 1. Mendaftar ke kursus yang diinginkan.
 2. Mengakses materi dari kursus yang telah diikuti.
 3. Melakukan pembayaran untuk kursus.
@@ -89,24 +89,26 @@
 
 ## Jenis Relasi dan Tabel yang Berelasi
 
-| No | Tabel 1   | Relasi | Tabel 2     | Jenis Relasi                                  |
-|----|-----------|--------|-------------|-----------------------------------------------|
-| 1  | pengguna  | ➝      | kursus      | One to Many (pengajar memiliki banyak kursus) |
-| 2  | pengguna  | ⇄      | kursus      | Many to Many (via tabel pendaftaran)          |
-| 3  | kursus    | ➝      | materi      | One to Many (kursus memiliki banyak materi)   |
-| 4  | pengguna  | ➝      | transaksi   | One to Many (siswa melakukan banyak transaksi)|
-| 5  | kursus    | ➝      | transaksi   | One to Many (kursus memiliki banyak transaksi)|
-| 6  | pengguna  | ➝      | pendaftaran | One to Many                                   |
-| 7  | kursus    | ➝      | pendaftaran | One to Many                                   |
+| No | Tabel 1   | Relasi | Tabel 2     | Jenis Relasi                        |
+|----|-----------|--------|-------------|-------------------------------------|
+| 1  | pengguna  | ➝      | kursus      | One to Many                        |
+| 2  | pengguna  | ⇄      | kursus      | Many to Many (via pendaftaran)      |
+| 3  | kursus    | ➝      | materi      | One to Many                         |
+| 4  | pengguna  | ➝      | transaksi   | One to Many                         |
+| 5  | kursus    | ➝      | transaksi   | One to Many                         |
+| 6  | pengguna  | ➝      | pendaftaran | One to Many                         |
+| 7  | kursus    | ➝      | pendaftaran | One to Many                         |
 
 ---
 
 ## Penjelasan Relasi
 
-1. Setiap pengajar adalah pengguna yang dapat membuat banyak kursus (One to Many).
-2. Siswa dapat mendaftar ke banyak kursus, dan satu kursus dapat diikuti banyak siswa (Many to Many).
-3. Kursus memiliki banyak materi yang diunggah oleh pengajar.
-4. Transaksi dilakukan oleh siswa untuk mengikuti kursus, dan setiap transaksi mencatat status serta jumlah pembayaran.
-5. Pendaftaran menyimpan riwayat siswa yang mendaftar ke kursus tertentu.
+1.	Satu pengguna (pengajar) bisa mengelola lebih dari satu kursus.
+2.	Satu pengguna (pelajar) bisa mendaftar ke banyak kursus, dan satu kursus bisa diikuti oleh banyak pengguna (pelajar).
+3.	Satu kursus bisa memiliki banyak materi.
+4.	Satu pengguna (pelajar) bisa melakukan banyak transaksi pembayaran untuk kursus yang diikuti.
+5.	Satu kursus bisa memiliki banyak transaksi dari siswa yang mendaftar.
+6.	Satu pengguna (pelajar) bisa memiliki banyak pendaftaran kursus.
+7.	Satu kursus bisa memiliki banyak pendaftar (pelajar yang mendaftar).
 
 ---
