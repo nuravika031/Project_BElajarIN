@@ -105,7 +105,7 @@
 ## Penjelasan Relasi
 
 1.	Satu pengguna (pengajar) bisa mengelola lebih dari satu kursus.
-2.	Satu pengguna (pelajar) bisa mendaftar ke banyak kursus, dan satu kursus bisa diikuti oleh banyak pengguna (pelajar).
+2.	Banyak pengguna (pelajar) bisa mendaftar ke banyak kursus
 3.	Satu kursus bisa memiliki banyak materi.
 4.	Satu pengguna (pelajar) bisa melakukan banyak transaksi pembayaran untuk kursus yang diikuti.
 5.	Satu kursus bisa memiliki banyak transaksi dari siswa yang mendaftar.
